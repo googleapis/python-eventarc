@@ -442,7 +442,7 @@ class EventarcGrpcAsyncIOTransport(EventarcTransport):
         return self._stubs["list_channels"]
 
     @property
-    def create_channel(
+    def create_channel_(
         self,
     ) -> Callable[[eventarc.CreateChannelRequest], Awaitable[operations_pb2.Operation]]:
         r"""Return a callable for the create channel method over gRPC.
@@ -460,13 +460,13 @@ class EventarcGrpcAsyncIOTransport(EventarcTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if "create_channel" not in self._stubs:
-            self._stubs["create_channel"] = self.grpc_channel.unary_unary(
+        if "create_channel_" not in self._stubs:
+            self._stubs["create_channel_"] = self.grpc_channel.unary_unary(
                 "/google.cloud.eventarc.v1.Eventarc/CreateChannel",
                 request_serializer=eventarc.CreateChannelRequest.serialize,
                 response_deserializer=operations_pb2.Operation.FromString,
             )
-        return self._stubs["create_channel"]
+        return self._stubs["create_channel_"]
 
     @property
     def update_channel(

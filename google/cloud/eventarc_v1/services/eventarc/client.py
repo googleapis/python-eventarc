@@ -1168,7 +1168,7 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = self._transport._wrapped_methods[self._transport.create_channel]
+        rpc = self._transport._wrapped_methods[self._transport.create_channel_]
 
         # Certain fields should be provided within the metadata header;
         # add these here.

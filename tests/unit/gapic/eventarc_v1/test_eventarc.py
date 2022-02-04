@@ -2338,7 +2338,7 @@ def test_create_channel(request_type, transport: str = "grpc"):
     request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.create_channel), "__call__") as call:
+    with mock.patch.object(type(client.transport.create_channel_), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = operations_pb2.Operation(name="operations/spam")
         response = client.create_channel(request)
@@ -2360,7 +2360,7 @@ def test_create_channel_empty_call():
     )
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.create_channel), "__call__") as call:
+    with mock.patch.object(type(client.transport.create_channel_), "__call__") as call:
         client.create_channel()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
@@ -2380,7 +2380,7 @@ async def test_create_channel_async(
     request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.create_channel), "__call__") as call:
+    with mock.patch.object(type(client.transport.create_channel_), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             operations_pb2.Operation(name="operations/spam")
@@ -2411,7 +2411,7 @@ def test_create_channel_field_headers():
     request.parent = "parent/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.create_channel), "__call__") as call:
+    with mock.patch.object(type(client.transport.create_channel_), "__call__") as call:
         call.return_value = operations_pb2.Operation(name="operations/op")
         client.create_channel(request)
 
@@ -2436,7 +2436,7 @@ async def test_create_channel_field_headers_async():
     request.parent = "parent/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.create_channel), "__call__") as call:
+    with mock.patch.object(type(client.transport.create_channel_), "__call__") as call:
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             operations_pb2.Operation(name="operations/op")
         )
@@ -2456,7 +2456,7 @@ def test_create_channel_flattened():
     client = EventarcClient(credentials=ga_credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.create_channel), "__call__") as call:
+    with mock.patch.object(type(client.transport.create_channel_), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = operations_pb2.Operation(name="operations/op")
         # Call the method with a truthy value for each flattened field,
@@ -2501,7 +2501,7 @@ async def test_create_channel_flattened_async():
     client = EventarcAsyncClient(credentials=ga_credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.create_channel), "__call__") as call:
+    with mock.patch.object(type(client.transport.create_channel_), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = operations_pb2.Operation(name="operations/op")
 
@@ -4143,7 +4143,7 @@ def test_eventarc_base_transport():
         "delete_trigger",
         "get_channel",
         "list_channels",
-        "create_channel",
+        "create_channel_",
         "update_channel",
         "delete_channel",
         "get_channel_connection",

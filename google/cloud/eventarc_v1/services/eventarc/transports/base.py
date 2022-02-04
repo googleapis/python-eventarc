@@ -144,8 +144,8 @@ class EventarcTransport(abc.ABC):
             self.list_channels: gapic_v1.method.wrap_method(
                 self.list_channels, default_timeout=None, client_info=client_info,
             ),
-            self.create_channel: gapic_v1.method.wrap_method(
-                self.create_channel, default_timeout=None, client_info=client_info,
+            self.create_channel_: gapic_v1.method.wrap_method(
+                self.create_channel_, default_timeout=None, client_info=client_info,
             ),
             self.update_channel: gapic_v1.method.wrap_method(
                 self.update_channel, default_timeout=None, client_info=client_info,
@@ -251,7 +251,7 @@ class EventarcTransport(abc.ABC):
         raise NotImplementedError()
 
     @property
-    def create_channel(
+    def create_channel_(
         self,
     ) -> Callable[
         [eventarc.CreateChannelRequest],
