@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.2.3](https://github.com/googleapis/python-eventarc/compare/v0.2.2...v0.2.3) (2022-04-04)
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core >= 1.31.5, >= 2.3.2 on v0 release ([#89](https://github.com/googleapis/python-eventarc/issues/89)) ([560a0c9](https://github.com/googleapis/python-eventarc/commit/560a0c939f194de60598cce4cb091ad43086c0ed))
+
 ### [0.2.2](https://www.github.com/googleapis/python-eventarc/compare/v0.2.1...v0.2.2) (2021-07-30)
 
 
