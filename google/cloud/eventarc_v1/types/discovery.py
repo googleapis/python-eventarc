@@ -17,11 +17,11 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.eventarc.v1',
+    package="google.cloud.eventarc.v1",
     manifest={
-        'Provider',
-        'EventType',
-        'FilteringAttribute',
+        "Provider",
+        "EventType",
+        "FilteringAttribute",
     },
 )
 
@@ -52,7 +52,7 @@ class Provider(proto.Message):
     event_types = proto.RepeatedField(
         proto.MESSAGE,
         number=3,
-        message='EventType',
+        message="EventType",
     )
 
 
@@ -94,7 +94,7 @@ class EventType(proto.Message):
     filtering_attributes = proto.RepeatedField(
         proto.MESSAGE,
         number=3,
-        message='FilteringAttribute',
+        message="FilteringAttribute",
     )
     event_schema_uri = proto.Field(
         proto.STRING,
