@@ -34,6 +34,7 @@ from .types.eventarc import DeleteChannelRequest
 from .types.eventarc import DeleteTriggerRequest
 from .types.eventarc import GetChannelConnectionRequest
 from .types.eventarc import GetChannelRequest
+from .types.eventarc import GetGoogleChannelConfigRequest
 from .types.eventarc import GetProviderRequest
 from .types.eventarc import GetTriggerRequest
 from .types.eventarc import ListChannelConnectionsRequest
@@ -46,12 +47,15 @@ from .types.eventarc import ListTriggersRequest
 from .types.eventarc import ListTriggersResponse
 from .types.eventarc import OperationMetadata
 from .types.eventarc import UpdateChannelRequest
+from .types.eventarc import UpdateGoogleChannelConfigRequest
 from .types.eventarc import UpdateTriggerRequest
+from .types.google_channel_config import GoogleChannelConfig
 from .types.trigger import CloudRun
 from .types.trigger import Destination
 from .types.trigger import EventFilter
 from .types.trigger import GKE
 from .types.trigger import Pubsub
+from .types.trigger import StateCondition
 from .types.trigger import Transport
 from .types.trigger import Trigger
 
@@ -74,8 +78,10 @@ __all__ = (
     "GKE",
     "GetChannelConnectionRequest",
     "GetChannelRequest",
+    "GetGoogleChannelConfigRequest",
     "GetProviderRequest",
     "GetTriggerRequest",
+    "GoogleChannelConfig",
     "ListChannelConnectionsRequest",
     "ListChannelConnectionsResponse",
     "ListChannelsRequest",
@@ -87,8 +93,10 @@ __all__ = (
     "OperationMetadata",
     "Provider",
     "Pubsub",
+    "StateCondition",
     "Transport",
     "Trigger",
     "UpdateChannelRequest",
+    "UpdateGoogleChannelConfigRequest",
     "UpdateTriggerRequest",
 )

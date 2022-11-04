@@ -18,6 +18,9 @@ import proto  # type: ignore
 from google.cloud.eventarc_v1.types import channel as gce_channel
 from google.cloud.eventarc_v1.types import channel_connection as gce_channel_connection
 from google.cloud.eventarc_v1.types import discovery
+from google.cloud.eventarc_v1.types import (
+    google_channel_config as gce_google_channel_config,
+)
 from google.cloud.eventarc_v1.types import trigger as gce_trigger
 from google.protobuf import field_mask_pb2  # type: ignore
 from google.protobuf import timestamp_pb2  # type: ignore
@@ -46,6 +49,8 @@ __protobuf__ = proto.module(
         "ListChannelConnectionsResponse",
         "CreateChannelConnectionRequest",
         "DeleteChannelConnectionRequest",
+        "UpdateGoogleChannelConfigRequest",
+        "GetGoogleChannelConfigRequest",
         "OperationMetadata",
     },
 )
@@ -74,7 +79,8 @@ class ListTriggersRequest(proto.Message):
             triggers on.
         page_size (int):
             The maximum number of triggers to return on
-            each page. Note: The service may send fewer.
+            each page.
+            Note: The service may send fewer.
         page_token (str):
             The page token; provide the value from the
             ``next_page_token`` field in a previous ``ListTriggers``
@@ -89,6 +95,12 @@ class ListTriggersRequest(proto.Message):
             is ascending. To specify descending order for a field,
             append a ``desc`` suffix; for example:
             ``name desc, trigger_id``.
+        filter (str):
+            Filter field. Used to filter the Triggers to
+            be listed. Possible filters are described in
+            https://google.aip.dev/160. For example, using
+            "?filter=destination:gke" would list only
+            Triggers with a gke destination.
     """
 
     parent = proto.Field(
@@ -107,6 +119,10 @@ class ListTriggersRequest(proto.Message):
         proto.STRING,
         number=4,
     )
+    filter = proto.Field(
+        proto.STRING,
+        number=5,
+    )
 
 
 class ListTriggersResponse(proto.Message):
@@ -117,9 +133,9 @@ class ListTriggersResponse(proto.Message):
             The requested triggers, up to the number specified in
             ``page_size``.
         next_page_token (str):
-            A page token that can be sent to ListTriggers
-            to request the next page. If this is empty, then
-            there are no more pages.
+            A page token that can be sent to ``ListTriggers`` to request
+            the next page. If this is empty, then there are no more
+            pages.
         unreachable (Sequence[str]):
             Unreachable resources, if any.
     """
@@ -280,7 +296,8 @@ class ListChannelsRequest(proto.Message):
             channels on.
         page_size (int):
             The maximum number of channels to return on
-            each page. Note: The service may send fewer.
+            each page.
+            Note: The service may send fewer.
         page_token (str):
             The page token; provide the value from the
             ``next_page_token`` field in a previous ``ListChannels``
@@ -323,9 +340,9 @@ class ListChannelsResponse(proto.Message):
             The requested channels, up to the number specified in
             ``page_size``.
         next_page_token (str):
-            A page token that can be sent to ListChannels
-            to request the next page. If this is empty, then
-            there are no more pages.
+            A page token that can be sent to ``ListChannels`` to request
+            the next page. If this is empty, then there are no more
+            pages.
         unreachable (Sequence[str]):
             Unreachable resources, if any.
     """
@@ -510,9 +527,9 @@ class ListProvidersResponse(proto.Message):
             The requested providers, up to the number specified in
             ``page_size``.
         next_page_token (str):
-            A page token that can be sent to
-            ListProviders to request the next page. If this
-            is empty, then there are no more pages.
+            A page token that can be sent to ``ListProviders`` to
+            request the next page. If this is empty, then there are no
+            more pages.
         unreachable (Sequence[str]):
             Unreachable resources, if any.
     """
@@ -560,8 +577,8 @@ class ListChannelConnectionsRequest(proto.Message):
             list channel connections.
         page_size (int):
             The maximum number of channel connections to
-            return on each page. Note: The service may send
-            fewer responses.
+            return on each page.
+            Note: The service may send fewer responses.
         page_token (str):
             The page token; provide the value from the
             ``next_page_token`` field in a previous
@@ -595,9 +612,9 @@ class ListChannelConnectionsResponse(proto.Message):
             The requested channel connections, up to the number
             specified in ``page_size``.
         next_page_token (str):
-            A page token that can be sent to
-            ListChannelConnections to request the next page.
-            If this is empty, then there are no more pages.
+            A page token that can be sent to ``ListChannelConnections``
+            to request the next page. If this is empty, then there are
+            no more pages.
         unreachable (Sequence[str]):
             Unreachable resources, if any.
     """
@@ -657,6 +674,45 @@ class DeleteChannelConnectionRequest(proto.Message):
         name (str):
             Required. The name of the channel connection
             to delete.
+    """
+
+    name = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+
+
+class UpdateGoogleChannelConfigRequest(proto.Message):
+    r"""The request message for the UpdateGoogleChannelConfig method.
+
+    Attributes:
+        google_channel_config (google.cloud.eventarc_v1.types.GoogleChannelConfig):
+            Required. The config to be updated.
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
+            The fields to be updated; only fields explicitly provided
+            are updated. If no field mask is provided, all provided
+            fields in the request are updated. To update all fields,
+            provide a field mask of "*".
+    """
+
+    google_channel_config = proto.Field(
+        proto.MESSAGE,
+        number=1,
+        message=gce_google_channel_config.GoogleChannelConfig,
+    )
+    update_mask = proto.Field(
+        proto.MESSAGE,
+        number=2,
+        message=field_mask_pb2.FieldMask,
+    )
+
+
+class GetGoogleChannelConfigRequest(proto.Message):
+    r"""The request message for the GetGoogleChannelConfig method.
+
+    Attributes:
+        name (str):
+            Required. The name of the config to get.
     """
 
     name = proto.Field(

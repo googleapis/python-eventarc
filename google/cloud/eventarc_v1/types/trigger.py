@@ -16,6 +16,7 @@
 import proto  # type: ignore
 
 from google.protobuf import timestamp_pb2  # type: ignore
+from google.rpc import code_pb2  # type: ignore
 
 
 __protobuf__ = proto.module(
@@ -23,6 +24,7 @@ __protobuf__ = proto.module(
     manifest={
         "Trigger",
         "EventFilter",
+        "StateCondition",
         "Destination",
         "Transport",
         "CloudRun",
@@ -51,10 +53,10 @@ class Trigger(proto.Message):
         update_time (google.protobuf.timestamp_pb2.Timestamp):
             Output only. The last-modified time.
         event_filters (Sequence[google.cloud.eventarc_v1.types.EventFilter]):
-            Required. null The list of filters that
-            applies to event attributes. Only events that
-            match all the provided filters are sent to the
-            destination.
+            Required. Unordered list. The list of filters
+            that applies to event attributes. Only events
+            that match all the provided filters are sent to
+            the destination.
         service_account (str):
             Optional. The IAM service account email associated with the
             trigger. The service account represents the identity of the
@@ -91,6 +93,9 @@ class Trigger(proto.Message):
             ``projects/{project}/locations/{location}/channels/{channel}``
             format. You must provide a channel to receive events from
             Eventarc SaaS partners.
+        conditions (Mapping[str, google.cloud.eventarc_v1.types.StateCondition]):
+            Output only. The reason(s) why a trigger is
+            in FAILED state.
         etag (str):
             Output only. This checksum is computed by the
             server based on the value of other fields, and
@@ -145,6 +150,12 @@ class Trigger(proto.Message):
         proto.STRING,
         number=13,
     )
+    conditions = proto.MapField(
+        proto.STRING,
+        proto.MESSAGE,
+        number=15,
+        message="StateCondition",
+    )
     etag = proto.Field(
         proto.STRING,
         number=99,
@@ -185,6 +196,27 @@ class EventFilter(proto.Message):
     )
 
 
+class StateCondition(proto.Message):
+    r"""A condition that is part of the trigger state computation.
+
+    Attributes:
+        code (google.rpc.code_pb2.Code):
+            The canonical code of the condition.
+        message (str):
+            Human-readable message.
+    """
+
+    code = proto.Field(
+        proto.ENUM,
+        number=1,
+        enum=code_pb2.Code,
+    )
+    message = proto.Field(
+        proto.STRING,
+        number=2,
+    )
+
+
 class Destination(proto.Message):
     r"""Represents a target of an invocation over HTTP.
 
@@ -214,6 +246,13 @@ class Destination(proto.Message):
             project as the trigger.
 
             This field is a member of `oneof`_ ``descriptor``.
+        workflow (str):
+            The resource name of the Workflow whose Executions are
+            triggered by the events. The Workflow resource should be
+            deployed in the same project as the trigger. Format:
+            ``projects/{project}/locations/{location}/workflows/{workflow}``
+
+            This field is a member of `oneof`_ ``descriptor``.
     """
 
     cloud_run = proto.Field(
@@ -232,6 +271,11 @@ class Destination(proto.Message):
         number=3,
         oneof="descriptor",
         message="GKE",
+    )
+    workflow = proto.Field(
+        proto.STRING,
+        number=4,
+        oneof="descriptor",
     )
 
 

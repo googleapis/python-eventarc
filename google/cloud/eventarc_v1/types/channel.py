@@ -52,10 +52,9 @@ class Channel(proto.Message):
         update_time (google.protobuf.timestamp_pb2.Timestamp):
             Output only. The last-modified time.
         provider (str):
-            Required. The name of the event provider (e.g. Eventarc SaaS
-            partner) associated with the channel. This provider will be
-            granted permissions to publish events to the channel.
-            Format:
+            The name of the event provider (e.g. Eventarc SaaS partner)
+            associated with the channel. This provider will be granted
+            permissions to publish events to the channel. Format:
             ``projects/{project}/locations/{location}/providers/{provider_id}``.
         pubsub_topic (str):
             Output only. The name of the Pub/Sub topic created and
@@ -69,6 +68,12 @@ class Channel(proto.Message):
             Output only. The activation token for the
             channel. The token must be used by the provider
             to register the channel for publishing.
+        crypto_key_name (str):
+            Optional. Resource name of a KMS crypto key (managed by the
+            user) used to encrypt/decrypt their event data.
+
+            It must match the pattern
+            ``projects/*/locations/*/keyRings/*/cryptoKeys/*``.
     """
 
     class State(proto.Enum):
@@ -113,6 +118,10 @@ class Channel(proto.Message):
     activation_token = proto.Field(
         proto.STRING,
         number=10,
+    )
+    crypto_key_name = proto.Field(
+        proto.STRING,
+        number=11,
     )
 
 
