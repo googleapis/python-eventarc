@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -74,7 +85,7 @@ class EventarcClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[EventarcTransport]:
         """Returns an appropriate transport class.
 
@@ -531,7 +542,7 @@ class EventarcClient(metaclass=EventarcClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, EventarcTransport, None] = None,
+        transport: Optional[Union[str, EventarcTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -629,11 +640,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def get_trigger(
         self,
-        request: Union[eventarc.GetTriggerRequest, dict] = None,
+        request: Optional[Union[eventarc.GetTriggerRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> trigger.Trigger:
         r"""Get a single trigger.
@@ -731,11 +742,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def list_triggers(
         self,
-        request: Union[eventarc.ListTriggersRequest, dict] = None,
+        request: Optional[Union[eventarc.ListTriggersRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListTriggersPager:
         r"""List triggers.
@@ -845,13 +856,13 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def create_trigger(
         self,
-        request: Union[eventarc.CreateTriggerRequest, dict] = None,
+        request: Optional[Union[eventarc.CreateTriggerRequest, dict]] = None,
         *,
-        parent: str = None,
-        trigger: gce_trigger.Trigger = None,
-        trigger_id: str = None,
+        parent: Optional[str] = None,
+        trigger: Optional[gce_trigger.Trigger] = None,
+        trigger_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Create a new trigger in a particular project and
@@ -991,13 +1002,13 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def update_trigger(
         self,
-        request: Union[eventarc.UpdateTriggerRequest, dict] = None,
+        request: Optional[Union[eventarc.UpdateTriggerRequest, dict]] = None,
         *,
-        trigger: gce_trigger.Trigger = None,
-        update_mask: field_mask_pb2.FieldMask = None,
-        allow_missing: bool = None,
+        trigger: Optional[gce_trigger.Trigger] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
+        allow_missing: Optional[bool] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Update a single trigger.
@@ -1131,12 +1142,12 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def delete_trigger(
         self,
-        request: Union[eventarc.DeleteTriggerRequest, dict] = None,
+        request: Optional[Union[eventarc.DeleteTriggerRequest, dict]] = None,
         *,
-        name: str = None,
-        allow_missing: bool = None,
+        name: Optional[str] = None,
+        allow_missing: Optional[bool] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Delete a single trigger.
@@ -1260,11 +1271,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def get_channel(
         self,
-        request: Union[eventarc.GetChannelRequest, dict] = None,
+        request: Optional[Union[eventarc.GetChannelRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> channel.Channel:
         r"""Get a single Channel.
@@ -1368,11 +1379,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def list_channels(
         self,
-        request: Union[eventarc.ListChannelsRequest, dict] = None,
+        request: Optional[Union[eventarc.ListChannelsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListChannelsPager:
         r"""List channels.
@@ -1482,13 +1493,13 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def create_channel(
         self,
-        request: Union[eventarc.CreateChannelRequest, dict] = None,
+        request: Optional[Union[eventarc.CreateChannelRequest, dict]] = None,
         *,
-        parent: str = None,
-        channel: gce_channel.Channel = None,
-        channel_id: str = None,
+        parent: Optional[str] = None,
+        channel: Optional[gce_channel.Channel] = None,
+        channel_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Create a new channel in a particular project and
@@ -1628,12 +1639,12 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def update_channel(
         self,
-        request: Union[eventarc.UpdateChannelRequest, dict] = None,
+        request: Optional[Union[eventarc.UpdateChannelRequest, dict]] = None,
         *,
-        channel: gce_channel.Channel = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        channel: Optional[gce_channel.Channel] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Update a single channel.
@@ -1760,11 +1771,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def delete_channel(
         self,
-        request: Union[eventarc.DeleteChannelRequest, dict] = None,
+        request: Optional[Union[eventarc.DeleteChannelRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Delete a single channel.
@@ -1881,11 +1892,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def get_provider(
         self,
-        request: Union[eventarc.GetProviderRequest, dict] = None,
+        request: Optional[Union[eventarc.GetProviderRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> discovery.Provider:
         r"""Get a single Provider.
@@ -1983,11 +1994,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def list_providers(
         self,
-        request: Union[eventarc.ListProvidersRequest, dict] = None,
+        request: Optional[Union[eventarc.ListProvidersRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListProvidersPager:
         r"""List providers.
@@ -2097,11 +2108,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def get_channel_connection(
         self,
-        request: Union[eventarc.GetChannelConnectionRequest, dict] = None,
+        request: Optional[Union[eventarc.GetChannelConnectionRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> channel_connection.ChannelConnection:
         r"""Get a single ChannelConnection.
@@ -2204,11 +2215,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def list_channel_connections(
         self,
-        request: Union[eventarc.ListChannelConnectionsRequest, dict] = None,
+        request: Optional[Union[eventarc.ListChannelConnectionsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListChannelConnectionsPager:
         r"""List channel connections.
@@ -2319,13 +2330,13 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def create_channel_connection(
         self,
-        request: Union[eventarc.CreateChannelConnectionRequest, dict] = None,
+        request: Optional[Union[eventarc.CreateChannelConnectionRequest, dict]] = None,
         *,
-        parent: str = None,
-        channel_connection: gce_channel_connection.ChannelConnection = None,
-        channel_connection_id: str = None,
+        parent: Optional[str] = None,
+        channel_connection: Optional[gce_channel_connection.ChannelConnection] = None,
+        channel_connection_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Create a new ChannelConnection in a particular
@@ -2467,11 +2478,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def delete_channel_connection(
         self,
-        request: Union[eventarc.DeleteChannelConnectionRequest, dict] = None,
+        request: Optional[Union[eventarc.DeleteChannelConnectionRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Delete a single ChannelConnection.
@@ -2588,11 +2599,11 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def get_google_channel_config(
         self,
-        request: Union[eventarc.GetGoogleChannelConfigRequest, dict] = None,
+        request: Optional[Union[eventarc.GetGoogleChannelConfigRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> google_channel_config.GoogleChannelConfig:
         r"""Get a GoogleChannelConfig
@@ -2698,12 +2709,16 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def update_google_channel_config(
         self,
-        request: Union[eventarc.UpdateGoogleChannelConfigRequest, dict] = None,
+        request: Optional[
+            Union[eventarc.UpdateGoogleChannelConfigRequest, dict]
+        ] = None,
         *,
-        google_channel_config: gce_google_channel_config.GoogleChannelConfig = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        google_channel_config: Optional[
+            gce_google_channel_config.GoogleChannelConfig
+        ] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gce_google_channel_config.GoogleChannelConfig:
         r"""Update a single GoogleChannelConfig
@@ -2836,10 +2851,10 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -2890,10 +2905,10 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -2944,10 +2959,10 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def delete_operation(
         self,
-        request: operations_pb2.DeleteOperationRequest = None,
+        request: Optional[operations_pb2.DeleteOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a long-running operation.
@@ -2999,10 +3014,10 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -3053,10 +3068,10 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def set_iam_policy(
         self,
-        request: iam_policy_pb2.SetIamPolicyRequest = None,
+        request: Optional[iam_policy_pb2.SetIamPolicyRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Sets the IAM access control policy on the specified function.
@@ -3173,10 +3188,10 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def get_iam_policy(
         self,
-        request: iam_policy_pb2.GetIamPolicyRequest = None,
+        request: Optional[iam_policy_pb2.GetIamPolicyRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Gets the IAM access control policy for a function.
@@ -3294,10 +3309,10 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def test_iam_permissions(
         self,
-        request: iam_policy_pb2.TestIamPermissionsRequest = None,
+        request: Optional[iam_policy_pb2.TestIamPermissionsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> iam_policy_pb2.TestIamPermissionsResponse:
         r"""Tests the specified IAM permissions against the IAM access control
@@ -3353,10 +3368,10 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -3407,10 +3422,10 @@ class EventarcClient(metaclass=EventarcClientMeta):
 
     def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.

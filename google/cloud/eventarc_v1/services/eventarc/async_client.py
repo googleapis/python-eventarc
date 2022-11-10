@@ -16,7 +16,17 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+)
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -194,9 +204,9 @@ class EventarcAsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, EventarcTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the eventarc client.
@@ -240,11 +250,11 @@ class EventarcAsyncClient:
 
     async def get_trigger(
         self,
-        request: Union[eventarc.GetTriggerRequest, dict] = None,
+        request: Optional[Union[eventarc.GetTriggerRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> trigger.Trigger:
         r"""Get a single trigger.
@@ -276,7 +286,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.GetTriggerRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.GetTriggerRequest, dict]]):
                 The request object. The request message for the
                 GetTrigger method.
             name (:class:`str`):
@@ -342,11 +352,11 @@ class EventarcAsyncClient:
 
     async def list_triggers(
         self,
-        request: Union[eventarc.ListTriggersRequest, dict] = None,
+        request: Optional[Union[eventarc.ListTriggersRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListTriggersAsyncPager:
         r"""List triggers.
@@ -379,7 +389,7 @@ class EventarcAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.ListTriggersRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.ListTriggersRequest, dict]]):
                 The request object. The request message for the
                 ListTriggers method.
             parent (:class:`str`):
@@ -456,13 +466,13 @@ class EventarcAsyncClient:
 
     async def create_trigger(
         self,
-        request: Union[eventarc.CreateTriggerRequest, dict] = None,
+        request: Optional[Union[eventarc.CreateTriggerRequest, dict]] = None,
         *,
-        parent: str = None,
-        trigger: gce_trigger.Trigger = None,
-        trigger_id: str = None,
+        parent: Optional[str] = None,
+        trigger: Optional[gce_trigger.Trigger] = None,
+        trigger_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Create a new trigger in a particular project and
@@ -509,7 +519,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.CreateTriggerRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.CreateTriggerRequest, dict]]):
                 The request object. The request message for the
                 CreateTrigger method.
             parent (:class:`str`):
@@ -602,13 +612,13 @@ class EventarcAsyncClient:
 
     async def update_trigger(
         self,
-        request: Union[eventarc.UpdateTriggerRequest, dict] = None,
+        request: Optional[Union[eventarc.UpdateTriggerRequest, dict]] = None,
         *,
-        trigger: gce_trigger.Trigger = None,
-        update_mask: field_mask_pb2.FieldMask = None,
-        allow_missing: bool = None,
+        trigger: Optional[gce_trigger.Trigger] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
+        allow_missing: Optional[bool] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Update a single trigger.
@@ -644,7 +654,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.UpdateTriggerRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.UpdateTriggerRequest, dict]]):
                 The request object. The request message for the
                 UpdateTrigger method.
             trigger (:class:`google.cloud.eventarc_v1.types.Trigger`):
@@ -742,12 +752,12 @@ class EventarcAsyncClient:
 
     async def delete_trigger(
         self,
-        request: Union[eventarc.DeleteTriggerRequest, dict] = None,
+        request: Optional[Union[eventarc.DeleteTriggerRequest, dict]] = None,
         *,
-        name: str = None,
-        allow_missing: bool = None,
+        name: Optional[str] = None,
+        allow_missing: Optional[bool] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Delete a single trigger.
@@ -784,7 +794,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.DeleteTriggerRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.DeleteTriggerRequest, dict]]):
                 The request object. The request message for the
                 DeleteTrigger method.
             name (:class:`str`):
@@ -871,11 +881,11 @@ class EventarcAsyncClient:
 
     async def get_channel(
         self,
-        request: Union[eventarc.GetChannelRequest, dict] = None,
+        request: Optional[Union[eventarc.GetChannelRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> channel.Channel:
         r"""Get a single Channel.
@@ -907,7 +917,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.GetChannelRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.GetChannelRequest, dict]]):
                 The request object. The request message for the
                 GetChannel method.
             name (:class:`str`):
@@ -979,11 +989,11 @@ class EventarcAsyncClient:
 
     async def list_channels(
         self,
-        request: Union[eventarc.ListChannelsRequest, dict] = None,
+        request: Optional[Union[eventarc.ListChannelsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListChannelsAsyncPager:
         r"""List channels.
@@ -1016,7 +1026,7 @@ class EventarcAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.ListChannelsRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.ListChannelsRequest, dict]]):
                 The request object. The request message for the
                 ListChannels method.
             parent (:class:`str`):
@@ -1093,13 +1103,13 @@ class EventarcAsyncClient:
 
     async def create_channel(
         self,
-        request: Union[eventarc.CreateChannelRequest, dict] = None,
+        request: Optional[Union[eventarc.CreateChannelRequest, dict]] = None,
         *,
-        parent: str = None,
-        channel: gce_channel.Channel = None,
-        channel_id: str = None,
+        parent: Optional[str] = None,
+        channel: Optional[gce_channel.Channel] = None,
+        channel_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Create a new channel in a particular project and
@@ -1143,7 +1153,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.CreateChannelRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.CreateChannelRequest, dict]]):
                 The request object. The request message for the
                 CreateChannel method.
             parent (:class:`str`):
@@ -1239,12 +1249,12 @@ class EventarcAsyncClient:
 
     async def update_channel(
         self,
-        request: Union[eventarc.UpdateChannelRequest, dict] = None,
+        request: Optional[Union[eventarc.UpdateChannelRequest, dict]] = None,
         *,
-        channel: gce_channel.Channel = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        channel: Optional[gce_channel.Channel] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Update a single channel.
@@ -1280,7 +1290,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.UpdateChannelRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.UpdateChannelRequest, dict]]):
                 The request object. The request message for the
                 UpdateChannel method.
             channel (:class:`google.cloud.eventarc_v1.types.Channel`):
@@ -1371,11 +1381,11 @@ class EventarcAsyncClient:
 
     async def delete_channel(
         self,
-        request: Union[eventarc.DeleteChannelRequest, dict] = None,
+        request: Optional[Union[eventarc.DeleteChannelRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Delete a single channel.
@@ -1412,7 +1422,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.DeleteChannelRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.DeleteChannelRequest, dict]]):
                 The request object. The request message for the
                 DeleteChannel method.
             name (:class:`str`):
@@ -1492,11 +1502,11 @@ class EventarcAsyncClient:
 
     async def get_provider(
         self,
-        request: Union[eventarc.GetProviderRequest, dict] = None,
+        request: Optional[Union[eventarc.GetProviderRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> discovery.Provider:
         r"""Get a single Provider.
@@ -1528,7 +1538,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.GetProviderRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.GetProviderRequest, dict]]):
                 The request object. The request message for the
                 GetProvider method.
             name (:class:`str`):
@@ -1594,11 +1604,11 @@ class EventarcAsyncClient:
 
     async def list_providers(
         self,
-        request: Union[eventarc.ListProvidersRequest, dict] = None,
+        request: Optional[Union[eventarc.ListProvidersRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListProvidersAsyncPager:
         r"""List providers.
@@ -1631,7 +1641,7 @@ class EventarcAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.ListProvidersRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.ListProvidersRequest, dict]]):
                 The request object. The request message for the
                 ListProviders method.
             parent (:class:`str`):
@@ -1708,11 +1718,11 @@ class EventarcAsyncClient:
 
     async def get_channel_connection(
         self,
-        request: Union[eventarc.GetChannelConnectionRequest, dict] = None,
+        request: Optional[Union[eventarc.GetChannelConnectionRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> channel_connection.ChannelConnection:
         r"""Get a single ChannelConnection.
@@ -1744,7 +1754,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.GetChannelConnectionRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.GetChannelConnectionRequest, dict]]):
                 The request object. The request message for the
                 GetChannelConnection method.
             name (:class:`str`):
@@ -1815,11 +1825,11 @@ class EventarcAsyncClient:
 
     async def list_channel_connections(
         self,
-        request: Union[eventarc.ListChannelConnectionsRequest, dict] = None,
+        request: Optional[Union[eventarc.ListChannelConnectionsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListChannelConnectionsAsyncPager:
         r"""List channel connections.
@@ -1852,7 +1862,7 @@ class EventarcAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.ListChannelConnectionsRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.ListChannelConnectionsRequest, dict]]):
                 The request object. The request message for the
                 ListChannelConnections method.
             parent (:class:`str`):
@@ -1930,13 +1940,13 @@ class EventarcAsyncClient:
 
     async def create_channel_connection(
         self,
-        request: Union[eventarc.CreateChannelConnectionRequest, dict] = None,
+        request: Optional[Union[eventarc.CreateChannelConnectionRequest, dict]] = None,
         *,
-        parent: str = None,
-        channel_connection: gce_channel_connection.ChannelConnection = None,
-        channel_connection_id: str = None,
+        parent: Optional[str] = None,
+        channel_connection: Optional[gce_channel_connection.ChannelConnection] = None,
+        channel_connection_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Create a new ChannelConnection in a particular
@@ -1979,7 +1989,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.CreateChannelConnectionRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.CreateChannelConnectionRequest, dict]]):
                 The request object. The request message for the
                 CreateChannelConnection method.
             parent (:class:`str`):
@@ -2076,11 +2086,11 @@ class EventarcAsyncClient:
 
     async def delete_channel_connection(
         self,
-        request: Union[eventarc.DeleteChannelConnectionRequest, dict] = None,
+        request: Optional[Union[eventarc.DeleteChannelConnectionRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Delete a single ChannelConnection.
@@ -2116,7 +2126,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.DeleteChannelConnectionRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.DeleteChannelConnectionRequest, dict]]):
                 The request object. The request message for the
                 DeleteChannelConnection method.
             name (:class:`str`):
@@ -2195,11 +2205,11 @@ class EventarcAsyncClient:
 
     async def get_google_channel_config(
         self,
-        request: Union[eventarc.GetGoogleChannelConfigRequest, dict] = None,
+        request: Optional[Union[eventarc.GetGoogleChannelConfigRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> google_channel_config.GoogleChannelConfig:
         r"""Get a GoogleChannelConfig
@@ -2231,7 +2241,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.GetGoogleChannelConfigRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.GetGoogleChannelConfigRequest, dict]]):
                 The request object. The request message for the
                 GetGoogleChannelConfig method.
             name (:class:`str`):
@@ -2303,12 +2313,16 @@ class EventarcAsyncClient:
 
     async def update_google_channel_config(
         self,
-        request: Union[eventarc.UpdateGoogleChannelConfigRequest, dict] = None,
+        request: Optional[
+            Union[eventarc.UpdateGoogleChannelConfigRequest, dict]
+        ] = None,
         *,
-        google_channel_config: gce_google_channel_config.GoogleChannelConfig = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        google_channel_config: Optional[
+            gce_google_channel_config.GoogleChannelConfig
+        ] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gce_google_channel_config.GoogleChannelConfig:
         r"""Update a single GoogleChannelConfig
@@ -2343,7 +2357,7 @@ class EventarcAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.eventarc_v1.types.UpdateGoogleChannelConfigRequest, dict]):
+            request (Optional[Union[google.cloud.eventarc_v1.types.UpdateGoogleChannelConfigRequest, dict]]):
                 The request object. The request message for the
                 UpdateGoogleChannelConfig method.
             google_channel_config (:class:`google.cloud.eventarc_v1.types.GoogleChannelConfig`):
@@ -2426,10 +2440,10 @@ class EventarcAsyncClient:
 
     async def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -2480,10 +2494,10 @@ class EventarcAsyncClient:
 
     async def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -2534,10 +2548,10 @@ class EventarcAsyncClient:
 
     async def delete_operation(
         self,
-        request: operations_pb2.DeleteOperationRequest = None,
+        request: Optional[operations_pb2.DeleteOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a long-running operation.
@@ -2589,10 +2603,10 @@ class EventarcAsyncClient:
 
     async def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -2643,10 +2657,10 @@ class EventarcAsyncClient:
 
     async def set_iam_policy(
         self,
-        request: iam_policy_pb2.SetIamPolicyRequest = None,
+        request: Optional[iam_policy_pb2.SetIamPolicyRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Sets the IAM access control policy on the specified function.
@@ -2763,10 +2777,10 @@ class EventarcAsyncClient:
 
     async def get_iam_policy(
         self,
-        request: iam_policy_pb2.GetIamPolicyRequest = None,
+        request: Optional[iam_policy_pb2.GetIamPolicyRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Gets the IAM access control policy for a function.
@@ -2884,10 +2898,10 @@ class EventarcAsyncClient:
 
     async def test_iam_permissions(
         self,
-        request: iam_policy_pb2.TestIamPermissionsRequest = None,
+        request: Optional[iam_policy_pb2.TestIamPermissionsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> iam_policy_pb2.TestIamPermissionsResponse:
         r"""Tests the specified IAM permissions against the IAM access control
@@ -2943,10 +2957,10 @@ class EventarcAsyncClient:
 
     async def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -2997,10 +3011,10 @@ class EventarcAsyncClient:
 
     async def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from typing import MutableMapping, MutableSequence
+
 import proto  # type: ignore
 
 from google.protobuf import timestamp_pb2  # type: ignore
@@ -48,16 +50,16 @@ class GoogleChannelConfig(proto.Message):
             ``projects/*/locations/*/keyRings/*/cryptoKeys/*``.
     """
 
-    name = proto.Field(
+    name: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    update_time = proto.Field(
+    update_time: timestamp_pb2.Timestamp = proto.Field(
         proto.MESSAGE,
         number=6,
         message=timestamp_pb2.Timestamp,
     )
-    crypto_key_name = proto.Field(
+    crypto_key_name: str = proto.Field(
         proto.STRING,
         number=7,
     )
