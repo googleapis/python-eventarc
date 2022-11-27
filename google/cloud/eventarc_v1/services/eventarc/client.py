@@ -331,6 +331,12 @@ class EventarcClient(metaclass=EventarcClientMeta):
         return "*".format()
 
     @staticmethod
+    def parse_service_path(path: str) -> Dict[str, str]:
+        """Parses a service path into its component segments."""
+        m = re.match(r"^.*$", path)
+        return m.groupdict() if m else {}
+
+    @staticmethod
     def service_account_path(
         project: str,
         service_account: str,

@@ -6537,6 +6537,15 @@ def test_service_path():
     assert expected == actual
 
 
+def test_parse_service_path():
+    expected = {}
+    path = EventarcClient.service_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = EventarcClient.parse_service_path(path)
+    assert expected == actual
+
+
 def test_service_account_path():
     project = "squid"
     service_account = "clam"

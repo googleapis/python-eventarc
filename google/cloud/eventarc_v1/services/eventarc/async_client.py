@@ -95,7 +95,7 @@ class EventarcAsyncClient:
     provider_path = staticmethod(EventarcClient.provider_path)
     parse_provider_path = staticmethod(EventarcClient.parse_provider_path)
     service_path = staticmethod(EventarcClient.service_path)
-
+    parse_service_path = staticmethod(EventarcClient.parse_service_path)
     service_account_path = staticmethod(EventarcClient.service_account_path)
     parse_service_account_path = staticmethod(EventarcClient.parse_service_account_path)
     trigger_path = staticmethod(EventarcClient.trigger_path)
