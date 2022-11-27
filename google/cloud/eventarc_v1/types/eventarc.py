@@ -15,18 +15,17 @@
 #
 from typing import MutableMapping, MutableSequence
 
+from google.protobuf import field_mask_pb2  # type: ignore
+from google.protobuf import timestamp_pb2  # type: ignore
 import proto  # type: ignore
 
-from google.cloud.eventarc_v1.types import channel as gce_channel
 from google.cloud.eventarc_v1.types import channel_connection as gce_channel_connection
-from google.cloud.eventarc_v1.types import discovery
 from google.cloud.eventarc_v1.types import (
     google_channel_config as gce_google_channel_config,
 )
+from google.cloud.eventarc_v1.types import channel as gce_channel
+from google.cloud.eventarc_v1.types import discovery
 from google.cloud.eventarc_v1.types import trigger as gce_trigger
-from google.protobuf import field_mask_pb2  # type: ignore
-from google.protobuf import timestamp_pb2  # type: ignore
-
 
 __protobuf__ = proto.module(
     package="google.cloud.eventarc.v1",

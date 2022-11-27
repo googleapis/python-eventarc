@@ -13,17 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .channel import (
-    Channel,
-)
-from .channel_connection import (
-    ChannelConnection,
-)
-from .discovery import (
-    EventType,
-    FilteringAttribute,
-    Provider,
-)
+from .channel import Channel
+from .channel_connection import ChannelConnection
+from .discovery import EventType, FilteringAttribute, Provider
 from .eventarc import (
     CreateChannelConnectionRequest,
     CreateChannelRequest,
@@ -49,14 +41,12 @@ from .eventarc import (
     UpdateGoogleChannelConfigRequest,
     UpdateTriggerRequest,
 )
-from .google_channel_config import (
-    GoogleChannelConfig,
-)
+from .google_channel_config import GoogleChannelConfig
 from .trigger import (
+    GKE,
     CloudRun,
     Destination,
     EventFilter,
-    GKE,
     Pubsub,
     StateCondition,
     Transport,

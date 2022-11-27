@@ -22,41 +22,23 @@ try:
 except ImportError:  # pragma: NO COVER
     import mock
 
-import grpc
-from grpc.experimental import aio
 import math
-import pytest
-from proto.marshal.rules.dates import DurationRule, TimestampRule
-from proto.marshal.rules import wrappers
 
+from google.api_core import (
+    future,
+    gapic_v1,
+    grpc_helpers,
+    grpc_helpers_async,
+    operation,
+    operations_v1,
+    path_template,
+)
 from google.api_core import client_options
 from google.api_core import exceptions as core_exceptions
-from google.api_core import future
-from google.api_core import gapic_v1
-from google.api_core import grpc_helpers
-from google.api_core import grpc_helpers_async
-from google.api_core import operation
 from google.api_core import operation_async  # type: ignore
-from google.api_core import operations_v1
-from google.api_core import path_template
+import google.auth
 from google.auth import credentials as ga_credentials
 from google.auth.exceptions import MutualTLSChannelError
-from google.cloud.eventarc_v1.services.eventarc import EventarcAsyncClient
-from google.cloud.eventarc_v1.services.eventarc import EventarcClient
-from google.cloud.eventarc_v1.services.eventarc import pagers
-from google.cloud.eventarc_v1.services.eventarc import transports
-from google.cloud.eventarc_v1.types import channel
-from google.cloud.eventarc_v1.types import channel as gce_channel
-from google.cloud.eventarc_v1.types import channel_connection
-from google.cloud.eventarc_v1.types import channel_connection as gce_channel_connection
-from google.cloud.eventarc_v1.types import discovery
-from google.cloud.eventarc_v1.types import eventarc
-from google.cloud.eventarc_v1.types import google_channel_config
-from google.cloud.eventarc_v1.types import (
-    google_channel_config as gce_google_channel_config,
-)
-from google.cloud.eventarc_v1.types import trigger
-from google.cloud.eventarc_v1.types import trigger as gce_trigger
 from google.cloud.location import locations_pb2
 from google.iam.v1 import iam_policy_pb2  # type: ignore
 from google.iam.v1 import options_pb2  # type: ignore
@@ -66,7 +48,29 @@ from google.oauth2 import service_account
 from google.protobuf import field_mask_pb2  # type: ignore
 from google.protobuf import timestamp_pb2  # type: ignore
 from google.rpc import code_pb2  # type: ignore
-import google.auth
+import grpc
+from grpc.experimental import aio
+from proto.marshal.rules import wrappers
+from proto.marshal.rules.dates import DurationRule, TimestampRule
+import pytest
+
+from google.cloud.eventarc_v1.services.eventarc import (
+    EventarcAsyncClient,
+    EventarcClient,
+    pagers,
+    transports,
+)
+from google.cloud.eventarc_v1.types import channel_connection as gce_channel_connection
+from google.cloud.eventarc_v1.types import (
+    google_channel_config as gce_google_channel_config,
+)
+from google.cloud.eventarc_v1.types import channel
+from google.cloud.eventarc_v1.types import channel as gce_channel
+from google.cloud.eventarc_v1.types import channel_connection
+from google.cloud.eventarc_v1.types import discovery, eventarc
+from google.cloud.eventarc_v1.types import google_channel_config
+from google.cloud.eventarc_v1.types import trigger
+from google.cloud.eventarc_v1.types import trigger as gce_trigger
 
 
 def client_cert_source_callback():
